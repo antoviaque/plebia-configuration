@@ -1,0 +1,21 @@
+---
+# Installation & update of apt system packages which are role-independent
+
+- name: system-packages | apt-get update && dist-upgrade
+  apt: upgrade=dist update_cache=yes cache_valid_time=18000
+
+- name: system-packages | Install role-independent system packages
+  apt: pkg=$item state=installed
+  with_items:
+    - sudo
+    - vim
+    - htop
+    - iftop
+    - iotop
+    - mosh
+    - zsh
+    - git
+    - screen
+    - build-essential
+    - apticron
+

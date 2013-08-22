@@ -1,7 +1,7 @@
 ---
 # Tasks related to external users access and permissions
 
-- name: Set up authorized_keys for the root user
+- name: users | Set up authorized_keys for the root user
   authorized_key: user=root
                   key="{{ item }}"
   with_file:
