@@ -7,3 +7,10 @@
   with_file:
     - public_keys/ansible
     - public_keys/antoviaque
+
+- name: users | chmod 640 ~
+  file: path=/root owner=root group=root mode=640 state=directory
+- name: users | mkdir ~/dl
+  file: path=/root/dl owner=root group=root mode=644 state=directory
+- name: users | mkdir ~/src
+  file: path=/root/src owner=root group=root mode=644 state=directory

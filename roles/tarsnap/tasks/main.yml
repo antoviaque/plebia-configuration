@@ -1,0 +1,34 @@
+---
+# Tarsnap - backup
+
+- name: tarsnap | Install dependencies for Tarsnap
+  apt: pkg=$item state=installed
+  with_items:
+    - libssl-dev
+    - zlib1g-dev
+    - e2fslibs-dev
+    - build-essential
+
+- name: tarsnap | Download source
+  get_url: url=https://www.tarsnap.com/download/tarsnap-autoconf-${tarsnap_version}.tgz dest=/root/dl/tarsnap-autoconf-${tarsnap_version}.tgz
+
+- name: tarsnap | Decompress source
+  command: tar xzf /root/dl/tarsnap-autoconf-${tarsnap_version}.tgz chdir=/root/src creates=/root/src/tarsnap-autoconf-${tarsnap_version}/COPYING
+
+- name: tarsnap | Configure for local build
+  command: ./configure chdir=/root/src/tarsnap-autoconf-${tarsnap_version} creates=/root/src/tarsnap-autoconf-${tarsnap_version}/Makefile
+
+- name: tarsnap | Build and install
+  command: make all install clean chdir=/root/src/tarsnap-autoconf-${tarsnap_version} creates=/usr/local/bin/tarsnap
+
+- name: tarsnap | Copy key file into place
+  copy: src=tarsnap.key dest=/root/tarsnap.key owner=root group=root mode=0600
+
+- name: tarsnap | Create cache directory
+  file: state=directory path=/usr/tarsnap-cache
+
+- name: tarsnap | Check we can access tarsnap
+  command: tarsnap --cachedir /usr/tarsnap-cache --keyfile /root/tarsnap.key --list-archives
+
+#- name: tarsnap | Install nightly cronjob
+#  cron: name="Tarsnap backup" hour="3" job="tarsnap --cachedir /usr/tarsnap-cache --keyfile /root/tarsnap.key -c -f backup-`date +\%Y\%m\%d` /home /root /decrypted-mail /var/www /var/log /var/lib/mysql > /dev/null"
