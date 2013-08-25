@@ -1,4 +1,7 @@
 [openstack]
+openstack.plebia.org
+
+[the.re]
 localhost
 #different playbooks#edx.vm.plebia.org
 jenkins.vm.plebia.org
@@ -7,14 +10,18 @@ cardstories.vm.plebia.org
 language.vm.plebia.org
 theculture.vm.plebia.org
 antoviaque.vm.plebia.org
-#offline#farsides-tickets.vm.plebia.org
-#offline#webmail.vm.plebia.org
 
-[openvz]
-octopus.plebia.org
-media.plebia.org
-kochab.plebia.org
+# Offline
+#farsides-tickets.vm.plebia.org
+#webmail.vm.plebia.org
+
+#[openvz]
+#octopus.plebia.org
+#media.plebia.org
+#kochab.plebia.org
 #different backup#tartaruga.plebia.org
-hackertrade.plebia.org
-maildev.plebia.org
-monitoring.plebia.org
+
+# Offline
+#maildev.plebia.org
+#hackertrade.plebia.org
+#monitoring.plebia.org
