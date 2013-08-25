@@ -1,0 +1,40 @@
+---
+# OpenStack single node installation
+
+- name: openstack | Install prerequisite packages
+  apt: pkg=$item state=installed update_cache=yes cache_valid_time=18000
+  with_items:
+    - ubuntu-cloud-keyring
+    - python-software-properties
+    - software-properties-common
+    - python-keyring
+
+- name: openstack | Add Ubuntu Cloud repository
+  apt_repository: repo='deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-updates/grizzly main' state=present
+
+- name: openstack | rabbitmq APT key
+  apt_key: url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc state=present
+
+- name: openstack | rabbitmq repository
+  apt_repository: repo='deb http://www.rabbitmq.com/debian/ testing main' state=present
+
+- name: openstack | erlang APT key
+  apt_key: url=http://binaries.erlang-solutions.com/debian/erlang_solutions.asc state=present
+
+- name: openstack | erlang repository
+  apt_repository: repo='deb http://binaries.erlang-solutions.com/debian precise contrib' state=present
+
+- name: openstack | apt-get update && dist-upgrade
+  apt: upgrade=dist update_cache=yes cache_valid_time=18000
+
+- name: openstack | Install base packages
+  apt: pkg=$item state=installed
+  with_items:
+    - esl-erlang
+    - rabbitmq-server
+    - mysql-server
+    - python-mysqldb
+    - ntp
+    - vlan
+    - bridge-utils
+
