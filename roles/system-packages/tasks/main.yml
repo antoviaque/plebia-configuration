@@ -18,4 +18,15 @@
     - screen
     - build-essential
     - apticron
+    - apt-file
+    - etckeeper
+    - links
 
+- name: system-packages | Configure git author <root@<current_host>
+  shell: git config --global user.name "root" && git config --global user.email "root@{{ ansible_hostname }}"
+
+- name: system-packages | etckeeper - Use git
+  copy: src=etckeeper.conf dest=/etc/etckeeper/etckeeper.conf owner=root group=root mode=644 backup=yes
+
+- name: system-packages | etckeeper - git init && commit
+  shell: etckeeper init && etckeeper commit "Initial commit." creates=/etc/.git
