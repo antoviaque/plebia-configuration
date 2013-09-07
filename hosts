@@ -10,6 +10,8 @@ cardstories.vm.plebia.org
 language.vm.plebia.org
 theculture.vm.plebia.org
 antoviaque.vm.plebia.org
+10.145.2.16 # mongodb
+10.145.2.3 # mysql
 
 # Offline
 #farsides-tickets.vm.plebia.org
