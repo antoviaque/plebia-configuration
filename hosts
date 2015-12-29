@@ -1,7 +1,7 @@
 [webservers]
-opencraft
 web
 web-tartaruga
+opencraft
 
 [webproxies]
 cardstories

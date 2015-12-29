@@ -5,10 +5,28 @@
     - users
     - { role: kamaln7.swapfile, swapfile_size: 2GB }
 
-- hosts: web
+- hosts: webservers
   vars:
     - apache_remove_default_vhost: true
     - apache_mods_enabled:
+      - php5.load
       - rewrite.load
+    - php_memory_ilimit: "128M"
+    - php_max_execution_time: "90"
+    - php_upload_max_filesize: "256M"
+    - php_version: "5.5"
+    - php_packages:
+      - libapache2-mod-php5
+      - php5-common
+      - php5-cli
+      - php5-dev
+      - libpcre3-dev
+      - php5-gd
+      - php5-curl
+      - php5-imap
+      - php5-json
+    - php_mysql_package: php5-mysql
   roles:
     - geerlingguy.apache
+    - geerlingguy.php
+    - web
