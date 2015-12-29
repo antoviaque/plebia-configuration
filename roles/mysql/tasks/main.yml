@@ -1,0 +1,2 @@
+- name: mysql | mount /data
+  mount: name=/data src=/dev/vdb1 fstype=ext4 state=mounted
