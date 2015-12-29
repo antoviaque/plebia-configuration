@@ -7,3 +7,5 @@
   roles:
     - common
     - users
+    - { role: kamaln7.swapfile, swapfile_size: 2GB }
+
