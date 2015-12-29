@@ -1,9 +1,8 @@
-Jinja2==2.6
-PyYAML==3.10
-# http://stackoverflow.com/questions/11597103/modify-setup-py-to-support-pip-install-from-github
-git+git://github.com/ansible/ansible@devel#egg=ansible
-argparse==1.2.1
-boto==2.8.0
-paramiko==1.10.1
-pycrypto==2.6
-wsgiref==0.1.2
+ansible==1.9.4
+ecdsa==0.13
+Jinja2==2.8
+MarkupSafe==0.23
+paramiko==1.16.0
+pycrypto==2.6.1
+PyYAML==3.11
+wheel==0.24.0

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars:
+    max_clients: 200
+  user: ubuntu
+  sudo: True
+  roles:
+    - common
+    - users

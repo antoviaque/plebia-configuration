@@ -1,29 +1,12 @@
-[openstack]
-openstack.plebia.org
+[all]
+cardstories
+control
+mail
+mysql
+opencraft
+opencraft-tasks
+postgresql
+web
+web-tartaruga
 
-[the.re]
-localhost
-#different playbooks#edx.vm.plebia.org
-jenkins.vm.plebia.org
-farsides.vm.plebia.org
-cardstories.vm.plebia.org
-language.vm.plebia.org
-theculture.vm.plebia.org
-antoviaque.vm.plebia.org
-10.145.2.16 # mongodb
-10.145.2.3 # mysql
-
-# Offline
-#farsides-tickets.vm.plebia.org
-#webmail.vm.plebia.org
-
-#[openvz]
-#octopus.plebia.org
 #media.plebia.org
-#kochab.plebia.org
-#different backup#tartaruga.plebia.org
-
-# Offline
-#maildev.plebia.org
-#hackertrade.plebia.org
-#monitoring.plebia.org

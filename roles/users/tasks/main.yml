@@ -1,16 +1,18 @@
 ---
 # Tasks related to external users access and permissions
 
-- name: users | Set up authorized_keys for the root user
-  authorized_key: user=root
+- name: users | Set up authorized_keys for the ubuntu user
+  authorized_key: user=ubuntu
                   key="{{ item }}"
   with_file:
     - public_keys/ansible
     - public_keys/antoviaque
 
-- name: users | chmod 640 ~
-  file: path=/root owner=root group=root mode=640 state=directory
+- name: users | chmod 750 /root
+  file: path=/root owner=root group=root mode=750 state=directory
+- name: users | chmod 750 ~
+  file: path=/home/ubuntu owner=ubuntu group=ubuntu mode=750 state=directory
 - name: users | mkdir ~/dl
-  file: path=/root/dl owner=root group=root mode=644 state=directory
+  file: path=/home/ubuntu/dl owner=ubuntu group=ubuntu mode=755 state=directory
 - name: users | mkdir ~/src
-  file: path=/root/src owner=root group=root mode=644 state=directory
+  file: path=/home/ubuntu/src owner=ubuntu group=ubuntu mode=755 state=directory

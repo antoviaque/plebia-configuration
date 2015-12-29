@@ -1,6 +1,0 @@
----
-# Setup of VPN using tinc
-
-- name: vpn | apt-get install tinc
-  apt: pkg=tinc state=installed update_cache=yes cache_valid_time=18000
-

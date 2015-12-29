@@ -1,19 +1,16 @@
----
-# Installation & update of apt system packages which are role-independent
-
-- name: system-packages | apt-get update && dist-upgrade
+- name: openstack | apt-get update && dist-upgrade
   apt: upgrade=dist update_cache=yes cache_valid_time=18000
 
-- name: system-packages | Install role-independent system packages
-  apt: pkg=$item state=installed
+- name: common | Install prerequisite packages
+  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
   with_items:
+    - htop
+    - ntp
     - sudo
     - vim
-    - htop
     - iftop
     - iotop
     - mosh
-    - zsh
     - git
     - screen
     - build-essential
@@ -21,6 +18,7 @@
     - apt-file
     - etckeeper
     - links
+    - tree
 
 - name: system-packages | Configure git author <root@<current_host>
   shell: git config --global user.name "root" && git config --global user.email "root@{{ ansible_hostname }}"
