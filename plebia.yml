@@ -1,11 +1,14 @@
 ---
 - hosts: all
-  vars:
-    max_clients: 200
-  user: ubuntu
-  sudo: True
   roles:
     - common
     - users
     - { role: kamaln7.swapfile, swapfile_size: 2GB }
 
+- hosts: web
+  vars:
+    - apache_remove_default_vhost: true
+    - apache_mods_enabled:
+      - rewrite.load
+  roles:
+    - geerlingguy.apache

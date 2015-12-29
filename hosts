@@ -1,12 +1,15 @@
-[all]
-cardstories
-control
-mail
-mysql
+[webservers]
 opencraft
-opencraft-tasks
-postgresql
 web
 web-tartaruga
 
+[webproxies]
+cardstories
+opencraft-tasks
+
+[misc]
+mysql
+postgresql
+mail
+control
 #media.plebia.org
