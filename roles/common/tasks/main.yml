@@ -1,7 +1,10 @@
-- name: openstack | apt-get update && dist-upgrade
+- name: Copy hosts file
+  copy: src=hosts dest=/etc/hosts owner=root group=root mode=644
+
+- name: apt-get update && dist-upgrade
   apt: upgrade=dist update_cache=yes cache_valid_time=18000
 
-- name: common | Install prerequisite packages
+- name: Install prerequisite packages
   apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
   with_items:
     - htop
@@ -20,11 +23,11 @@
     - links
     - tree
 
-- name: system-packages | Configure git author <root@<current_host>
+- name: Configure git author <root@<current_host>
   shell: git config --global user.name "Xavier Antoviaque" && git config --global user.email "xavier@antoviaque.org"
 
-- name: system-packages | etckeeper - Use git
+- name: etckeeper - Use git
   copy: src=etckeeper.conf dest=/etc/etckeeper/etckeeper.conf owner=root group=root mode=644 backup=yes
 
-- name: system-packages | etckeeper - git init && commit
+- name: etckeeper - git init && commit
   shell: etckeeper init && etckeeper commit "Initial commit." creates=/etc/.git

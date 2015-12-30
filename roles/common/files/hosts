@@ -1,0 +1,21 @@
+127.0.0.1 localhost
+
+149.202.186.232	cardstories
+149.202.174.74	control
+149.202.186.230	mail
+149.202.181.25	mysql
+149.202.186.237	opencraft
+149.202.186.241	opencraft-tasks
+149.202.177.205	postgresql
+149.202.186.178	web
+149.202.186.213	web-tartaruga
+
+176.31.121.212 media
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
