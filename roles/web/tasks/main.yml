@@ -1,3 +1,8 @@
 - name: web | mount /var/www
   mount: name=/var/www src=/dev/vdb1 fstype=ext4 state=mounted
   when: "inventory_hostname not in excluded_mounts"
+
+- name: Install prerequisite packages
+  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
+  with_items:
+    - mysql-client
