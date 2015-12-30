@@ -6,28 +6,24 @@
     - { role: geerlingguy.security, security_sudoers_passwordless: [ubuntu] }
     - { role: kamaln7.swapfile, swapfile_size: 2GB }
 
-- hosts: media
-  roles:
-    - media
-
 - hosts: mysql
   roles:
     - mysql # mount must happen before package installation
     - geerlingguy.mysql
 
-- hosts: webservers
+- hosts: web
   vars:
-    - apache_remove_default_vhost: true
-    - apache_mods_enabled:
-      - php5.load
-      - rewrite.load
+    - excluded_mounts: [media]
+    #- nginx_remove_default_vhost: true
     - php_memory_ilimit: "128M"
     - php_max_execution_time: "90"
     - php_upload_max_filesize: "256M"
     - php_version: "5.5"
+    - php_enable_php_fpm: true
+    - php_webserver_daemon: "nginx"
     - php_packages:
-      - libapache2-mod-php5
       - php5-common
+      - php5-fpm
       - php5-cli
       - php5-dev
       - libpcre3-dev
@@ -38,6 +34,11 @@
     - php_mysql_package: php5-mysql
   roles:
     - web # mount must happen before package installation
-    - geerlingguy.apache
+    - geerlingguy.nginx
     - geerlingguy.php
     - geerlingguy.php-mysql
+
+- hosts: media
+  roles:
+    - media
+

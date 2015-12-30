@@ -1,2 +1,3 @@
 - name: web | mount /var/www
   mount: name=/var/www src=/dev/vdb1 fstype=ext4 state=mounted
+  when: "inventory_hostname not in excluded_mounts"
