@@ -1,0 +1,49 @@
+- name: Install system packages
+  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
+  with_items:
+    - postfix
+    - postfix-mysql
+    - postgrey
+    - mysql-client
+
+- name: Create mailbox group
+  group: name=mailbox gid=2500 system=yes
+
+- name: Create mailbox user
+  user: name=mailbox uid=2500 group=mailbox system=yes
+
+- name: mount /mailbox
+  mount: name=/mailbox src=/dev/vdb1 fstype=ext4 state=mounted
+
+- name: chown /mailbox
+  file: path=/mailbox owner=mailbox group=mailbox state=directory
+
+- name: chmod /mailbox
+  file: path=/mailbox mode=750 state=directory
+
+- name: Copy postfix configuration
+  synchronize: src="etc/" dest=/etc checksum=yes
+  notify:
+    #TODO:- run postmap
+    - restart postfix
+
+# TODO:
+
+# Files to send as templates:
+#mysql_*
+#sasl_passwd
+
+# Files to pass to postmap:
+#sasl_passwd
+#sender_dependent_relayhost
+#smtp_auth
+#transport
+#virtual
+#local_recipient_maps
+#/etc/aliases
+
+# To configure:
+#/etc/mailname
+#/etc/postgrey/*
+
+# + courrier

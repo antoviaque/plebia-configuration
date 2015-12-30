@@ -11,6 +11,10 @@
     - mysql # mount must happen before package installation
     - geerlingguy.mysql
 
+- hosts: mail
+  roles:
+    - postfix
+
 - hosts: webservers
   vars:
     - excluded_mounts: ['media', 'opencraft-tasks', 'cardstories']
