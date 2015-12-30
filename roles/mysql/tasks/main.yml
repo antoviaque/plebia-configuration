@@ -1,2 +1,5 @@
-- name: mysql | mount /data
-  mount: name=/data src=/dev/vdb1 fstype=ext4 state=mounted
+- name: mount /var/lib/mysql
+  mount: name=/var/lib/mysql src=/dev/vdb1 fstype=ext4 state=mounted
+
+- name: chmod & chown /var/lib/mysql
+  file: path=/var/lib/mysql owner=mysql group=mysql mode=700 state=directory

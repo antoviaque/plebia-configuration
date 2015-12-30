@@ -10,8 +10,6 @@
     - media
 
 - hosts: mysql
-  vars:
-    - mysql_datadir: /data/dbs
   roles:
     - mysql # mount must happen before package installation
     - geerlingguy.mysql
