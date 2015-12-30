@@ -40,3 +40,4 @@
     - web # mount must happen before package installation
     - geerlingguy.apache
     - geerlingguy.php
+    - geerlingguy.php-mysql
