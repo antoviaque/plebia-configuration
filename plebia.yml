@@ -13,7 +13,7 @@
 
 - hosts: webservers
   vars:
-    - excluded_mounts: [media]
+    - excluded_mounts: ['media', 'opencraft-tasks', 'cardstories']
     #- nginx_remove_default_vhost: true
     - php_memory_ilimit: "128M"
     - php_max_execution_time: "90"
