@@ -5,6 +5,10 @@
     - users
     - { role: kamaln7.swapfile, swapfile_size: 2GB }
 
+- hosts: media
+  roles:
+    - media
+
 - hosts: mysql
   vars:
     - mysql_datadir: /data/dbs

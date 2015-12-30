@@ -1,0 +1,15 @@
+- name: Add deluge PPA
+  apt_repository: repo='ppa:deluge-team/ppa'
+
+- name: Install deluge
+  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
+  with_items:
+    - deluge
+
+- name: Create media user
+  user: name=media shell=/bin/bash
+
+- name: chmod 750 ~media
+  file: path=/home/media owner=media group=media mode=750 state=directory
+- name: mkdir ~media/downloads
+  file: path=/home/media/downloads owner=media group=media mode=755 state=directory

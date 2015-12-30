@@ -4,6 +4,7 @@ web-tartaruga
 opencraft
 
 [webproxies]
+media
 cardstories
 opencraft-tasks
 
@@ -12,4 +13,3 @@ mysql
 postgresql
 mail
 control
-#media.plebia.org
