@@ -1,0 +1,7 @@
+- name: Ensure commands can be executed as www-data - set shell
+  user: name=www-data shell=/bin/false
+
+- name: Copy jira init script
+  copy: src=jira.conf dest=/etc/init/jira.conf
+  notify:
+    - restart jira

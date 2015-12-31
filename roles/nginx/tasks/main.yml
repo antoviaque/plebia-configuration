@@ -1,4 +1,4 @@
-- name: web | mount /var/www
+- name: mount /var/www
   mount: name=/var/www src=/dev/vdb1 fstype=ext4 state=mounted
   when: "inventory_hostname not in excluded_mounts"
 
@@ -9,5 +9,10 @@
 
 - name: Copy nginx sites configuration
   synchronize: src="nginx/{{ inventory_hostname }}/" dest=/etc/nginx/sites-enabled checksum=yes delete=yes
+  notify:
+    - restart nginx
+
+- name: Copy nginx SSL certificates
+  synchronize: src="nginx/ssl/{{ inventory_hostname }}/" dest=/etc/nginx/ssl checksum=yes delete=yes
   notify:
     - restart nginx

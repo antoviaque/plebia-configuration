@@ -17,7 +17,7 @@
 
 - hosts: webservers
   vars:
-    - excluded_mounts: ['media', 'opencraft-tasks', 'cardstories']
+    - excluded_mounts: ['media']
     - nginx_remove_default_vhost: true
     - php_memory_ilimit: "128M"
     - php_max_execution_time: "90"
@@ -40,9 +40,15 @@
     - geerlingguy.nginx
     - geerlingguy.php
     - geerlingguy.php-mysql
-    - web
+    - nginx
+
+- hosts: opencraft-tasks
+  vars:
+    - java_oracle_distribution: jre
+  roles:
+    - groover.java
+    - jira
 
 - hosts: media
   roles:
     - media
-
