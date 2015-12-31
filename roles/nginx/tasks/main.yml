@@ -6,6 +6,7 @@
   apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
   with_items:
     - mysql-client
+    - postfix
 
 - name: Copy nginx sites configuration
   synchronize: src="nginx/{{ inventory_hostname }}/" dest=/etc/nginx/sites-enabled checksum=yes delete=yes
