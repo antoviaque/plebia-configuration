@@ -25,6 +25,7 @@
     - etckeeper
     - links
     - tree
+    - pwgen
 
 - name: Configure git author <root@<current_host>
   shell: git config --global user.name "Xavier Antoviaque" && git config --global user.email "xavier@antoviaque.org"
