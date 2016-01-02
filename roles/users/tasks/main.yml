@@ -1,18 +1,33 @@
 ---
 # Tasks related to external users access and permissions
 
-- name: users | Set up authorized_keys for the ubuntu user
+- name: Set up authorized_keys for the ubuntu user
   authorized_key: user=ubuntu
                   key="{{ item }}"
   with_file:
     - public_keys/ansible
     - public_keys/antoviaque
 
-- name: users | chmod 750 /root
+- name: chmod 750 /root
   file: path=/root owner=root group=root mode=750 state=directory
-- name: users | chmod 750 ~
+- name: chmod 750 ~
   file: path=/home/ubuntu owner=ubuntu group=ubuntu mode=750 state=directory
-- name: users | mkdir ~/dl
+- name: mkdir ~/dl
   file: path=/home/ubuntu/dl owner=ubuntu group=ubuntu mode=755 state=directory
-- name: users | mkdir ~/src
+- name: mkdir ~/src
   file: path=/home/ubuntu/src owner=ubuntu group=ubuntu mode=755 state=directory
+
+- name: Create admin users
+  user: name="{{ item.name }}" shell="{{ item.shell }}" password="{{ item.password }}"
+  when: "inventory_hostname in item.hosts"
+  with_items: users
+
+- name: Allow password SSH login on some hosts
+  lineinfile: dest=/etc/ssh/sshd_config line="PasswordAuthentication yes" regexp="^PasswordAuthentication "
+  when: "inventory_hostname in sshd_allow_login_password"
+  notify: reload sshd
+
+- name: Disable password SSH login on the other hosts
+  lineinfile: dest=/etc/ssh/sshd_config line="PasswordAuthentication no" regexp="^PasswordAuthentication "
+  when: "inventory_hostname not in sshd_allow_login_password"
+  notify: reload sshd
