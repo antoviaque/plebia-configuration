@@ -54,6 +54,10 @@
     - groover.java
     - jira
 
+- hosts: cardstories
+  roles:
+    - cardstories
+
 - hosts: media
   roles:
     - media

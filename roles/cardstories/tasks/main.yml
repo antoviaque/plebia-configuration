@@ -1,0 +1,25 @@
+- name: Install prerequisite packages
+  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
+  with_items:
+    - python-pip
+    - python-dev
+    - libjpeg-dev
+    - libxml2-dev
+    - libxslt-dev
+    - sqlite3
+
+- name: Ensure commands can be executed as www-data - set shell
+  user: name=www-data shell=/bin/bash
+
+- name: Copy cardstories init script
+  copy: src=cardstories dest=/etc/init.d/cardstories mode=755
+  notify:
+    - start cardstories
+
+- name: Copy cardstories-website init script
+  copy: src=cardstories-website.conf dest=/etc/init/cardstories-website.conf
+  notify:
+    - start cardstories-website
+
+- name: Install python requirements
+  pip: requirements=/var/www/cardstories/requirements.txt
