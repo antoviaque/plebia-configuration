@@ -22,7 +22,7 @@
   file: path=/mailbox mode=750 state=directory
 
 - name: Copy postfix configuration
-  synchronize: src="etc/" dest=/etc checksum=yes
+  synchronize: src="etc/" dest=/etc checksum=yes owner=no group=no
   notify:
     - run newaliases
     - run postmap
@@ -38,6 +38,3 @@
     - etc/postfix/sasl_passwd
   notify:
     - restart postfix
-
-# To configure:
-#/etc/postgrey/*

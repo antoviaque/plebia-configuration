@@ -13,12 +13,12 @@
     - courier-ssl
 
 - name: Copy courier configuration
-  synchronize: src="etc/" dest=/etc checksum=yes
+  synchronize: src="etc/" dest=/etc checksum=yes owner=no group=no
   notify:
     - restart courier
 
 - name: Copy courier SSL keys
-  synchronize: src=ssl/ dest=/etc/courier checksum=yes
+  synchronize: src=ssl/ dest=/etc/courier checksum=yes owner=no group=no
   notify:
     - restart courier
 

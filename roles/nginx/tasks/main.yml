@@ -9,17 +9,17 @@
     - postfix
 
 - name: Copy nginx global configuration
-  synchronize: src="global/" dest=/etc/nginx/global checksum=yes delete=yes
+  synchronize: src="global/" dest=/etc/nginx/global checksum=yes delete=yes owner=no group=no
   notify:
     - restart nginx
 
 - name: Copy nginx sites configuration
-  synchronize: src="sites/{{ inventory_hostname }}/" dest=/etc/nginx/sites-enabled checksum=yes delete=yes
+  synchronize: src="sites/{{ inventory_hostname }}/" dest=/etc/nginx/sites-enabled checksum=yes delete=yes owner=no group=no
   notify:
     - restart nginx
 
 - name: Copy nginx SSL certificates
-  synchronize: src="ssl/{{ inventory_hostname }}/" dest=/etc/nginx/ssl checksum=yes delete=yes
+  synchronize: src="ssl/{{ inventory_hostname }}/" dest=/etc/nginx/ssl checksum=yes delete=yes owner=no group=no
   notify:
     - restart nginx
 
