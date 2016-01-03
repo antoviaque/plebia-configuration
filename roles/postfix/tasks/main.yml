@@ -26,6 +26,7 @@
   notify:
     - run newaliases
     - run postmap
+    - restart postgrey
     - restart postfix
 
 - name: Generate postfix configuration templates
