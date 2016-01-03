@@ -22,26 +22,6 @@
     - courier
 
 - hosts: webservers
-  vars:
-    - excluded_mounts: ['media']
-    - nginx_remove_default_vhost: true
-    - php_memory_ilimit: "128M"
-    - php_max_execution_time: "90"
-    - php_upload_max_filesize: "256M"
-    - php_version: "5.5"
-    - php_enable_php_fpm: true
-    - php_webserver_daemon: "nginx"
-    - php_packages:
-      - php5-common
-      - php5-fpm
-      - php5-cli
-      - php5-dev
-      - libpcre3-dev
-      - php5-gd
-      - php5-curl
-      - php5-imap
-      - php5-json
-    - php_mysql_package: php5-mysql
   roles:
     - geerlingguy.nginx
     - geerlingguy.php
