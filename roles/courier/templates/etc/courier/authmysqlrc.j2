@@ -1,0 +1,13 @@
+MYSQL_CRYPT_PWFIELD	password
+MYSQL_DATABASE		{{ postfix_mysql_dbname }}
+MYSQL_GID_FIELD		'2500'
+MYSQL_HOME_FIELD	'/mailbox'
+MYSQL_LOGIN_FIELD	username
+MYSQL_MAILDIR_FIELD	maildir
+MYSQL_NAME_FIELD	name
+MYSQL_OPT		0
+MYSQL_PASSWORD		{{ postfix_mysql_password }}
+MYSQL_SERVER		{{ postfix_mysql_host }}
+MYSQL_UID_FIELD		'2500'
+MYSQL_USERNAME		{{ postfix_mysql_user }}
+MYSQL_USER_TABLE	mailbox

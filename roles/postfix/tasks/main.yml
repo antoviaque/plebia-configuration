@@ -35,6 +35,8 @@
     - etc/postfix/mysql_virtual_domains_maps.cf
     - etc/postfix/mysql_virtual_mailbox_maps.cf
     - etc/postfix/sasl_passwd
+  notify:
+    - restart postfix
 
 # To configure:
 #/etc/postgrey/*

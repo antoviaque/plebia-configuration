@@ -1,0 +1,8 @@
+- name: restart courier
+  service: name="{{ item }}" state=restarted
+  with_items:
+    - courier-authdaemon
+    - courier-imap
+    - courier-imap-ssl
+    - courier-pop
+    - courier-pop-ssl

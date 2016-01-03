@@ -1,0 +1,30 @@
+- name: Install system packages
+  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
+  with_items:
+    - courier-authdaemon
+    - courier-authlib
+    - courier-authlib-mysql
+    - courier-authlib-userdb
+    - courier-base
+    - courier-imap
+    - courier-imap-ssl
+    - courier-pop
+    - courier-pop-ssl
+    - courier-ssl
+
+- name: Copy courier configuration
+  synchronize: src="etc/" dest=/etc checksum=yes
+  notify:
+    - restart courier
+
+- name: Copy courier SSL keys
+  synchronize: src=ssl/ dest=/etc/courier checksum=yes
+  notify:
+    - restart courier
+
+- name: Generate postfix configuration templates
+  template: src="{{ item }}.j2" dest="/{{ item }}" owner=root group=daemon mode=0640
+  with_items:
+    - etc/courier/authmysqlrc
+  notify:
+    - restart courier
