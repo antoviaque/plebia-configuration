@@ -230,11 +230,12 @@ authsmtp.com
 authsmtp.co.uk
 /^outmail\d+\.authsmtp\.net$/
 # LOCAL CONFIG
-/^.*.panelboxmanager.com$/
+/^.*\.panelboxmanager.com$/
 mail.plebia.org
 plebia.org
 kochab.plebia.org
 farsides.com
 smtp-out.amazonses.com
-/^.*.startcom.org$/
-/^.*.comodogroup.com$/
+/^.*\.startcom.org$/
+/^.*\.comodogroup.com$/
+/^.*\.messagingengine.com$/
