@@ -24,26 +24,17 @@
 - name: Copy postfix configuration
   synchronize: src="etc/" dest=/etc checksum=yes
   notify:
-    #TODO:- run postmap
+    - run newaliases
+    - run postmap
     - restart postfix
 
-# TODO:
-
-# Files to send as templates:
-#mysql_*
-#sasl_passwd
-
-# Files to pass to postmap:
-#sasl_passwd
-#sender_dependent_relayhost
-#smtp_auth
-#transport
-#virtual
-#local_recipient_maps
-#/etc/aliases
+- name: Generate postfix configuration templates
+  template: src="{{ item }}.j2" dest="/{{ item }}" owner=root group=postfix mode=0640
+  with_items:
+    - etc/postfix/mysql_virtual_alias_maps.cf
+    - etc/postfix/mysql_virtual_domains_maps.cf
+    - etc/postfix/mysql_virtual_mailbox_maps.cf
+    - etc/postfix/sasl_passwd
 
 # To configure:
-#/etc/mailname
 #/etc/postgrey/*
-
-# + courrier
