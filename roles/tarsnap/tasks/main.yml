@@ -1,34 +1,19 @@
 ---
 # Tarsnap - backup
 
-- name: tarsnap | Install dependencies for Tarsnap
-  apt: pkg=$item state=installed
-  with_items:
-    - libssl-dev
-    - zlib1g-dev
-    - e2fslibs-dev
-    - build-essential
+- name: Copy key file into place
+  copy: src="keys/{{ inventory_hostname }}.key" dest=/root/tarsnap.key owner=root group=root mode=0600
 
-- name: tarsnap | Download source
-  get_url: url=https://www.tarsnap.com/download/tarsnap-autoconf-${tarsnap_version}.tgz dest=/root/dl/tarsnap-autoconf-${tarsnap_version}.tgz
+- name: Create cache directory
+  file: state=directory path=/var/tarsnap/cache owner=root group=root mode=750
 
-- name: tarsnap | Decompress source
-  command: tar xzf /root/dl/tarsnap-autoconf-${tarsnap_version}.tgz chdir=/root/src creates=/root/src/tarsnap-autoconf-${tarsnap_version}/COPYING
+- name: Check if there is a pre-backup script
+  local_action: stat path="{{ role_path }}/files/bin/backup-pre/{{ inventory_hostname }}.sh"
+  register: tarsnap_pre_backup_script
 
-- name: tarsnap | Configure for local build
-  command: ./configure chdir=/root/src/tarsnap-autoconf-${tarsnap_version} creates=/root/src/tarsnap-autoconf-${tarsnap_version}/Makefile
+- name: Copy pre-backup script, if any
+  copy: src="bin/backup-pre/{{ inventory_hostname }}.sh" dest=/usr/sbin/backup-pre.sh owner=root group=root mode=755
+  when: tarsnap_pre_backup_script.stat.exists
 
-- name: tarsnap | Build and install
-  command: make all install clean chdir=/root/src/tarsnap-autoconf-${tarsnap_version} creates=/usr/local/bin/tarsnap
-
-- name: tarsnap | Copy key file into place
-  copy: src=tarsnap.key dest=/root/tarsnap.key owner=root group=root mode=0600
-
-- name: tarsnap | Create cache directory
-  file: state=directory path=/usr/tarsnap-cache
-
-- name: tarsnap | Check we can access tarsnap
-  command: tarsnap --cachedir /usr/tarsnap-cache --keyfile /root/tarsnap.key --list-archives
-
-#- name: tarsnap | Install nightly cronjob
-#  cron: name="Tarsnap backup" hour="3" job="tarsnap --cachedir /usr/tarsnap-cache --keyfile /root/tarsnap.key -c -f backup-`date +\%Y\%m\%d` /home /root /decrypted-mail /var/www /var/log /var/lib/mysql > /dev/null"
+- name: Check we can access tarsnap and run fsck
+  command: tarsnap --cachedir /var/tarsnap/cache --keyfile /root/tarsnap.key --fsck
