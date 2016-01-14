@@ -6,10 +6,10 @@
   with_items:
     - deluge
 
-- name: Create media user
-  user: name=media shell=/bin/bash
+- name: Create www-data user
+  user: name=www-data system=yes shell=/bin/bash
 
-- name: chmod 750 ~media
-  file: path=/home/media owner=media group=media mode=750 state=directory
-- name: mkdir ~media/downloads
-  file: path=/home/media/downloads owner=media group=media mode=755 state=directory
+- name: chmod 750 ~www-data
+  file: path=/var/www-data owner=www-data group=www-data mode=750 state=directory
+- name: mkdir ~www-data/downloads
+  file: path=/var/www/downloads owner=www-data group=www-data mode=755 state=directory
