@@ -66,5 +66,13 @@
     - cardstories
 
 - hosts: media
+  vars:
+    - sudo: yes
+    - transmission_user: www-data
+    - transmission_rpc_auth_required: false
+    - transmission_rpc_whitelist_enabled: false
+    - transmission_download_dir: /var/www/downloads
+    - transmission_watch_dir_enabled: false
   roles:
     - media
+    - elboletaire.transmission
