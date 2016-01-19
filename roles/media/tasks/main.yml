@@ -1,15 +1,13 @@
-- name: Add deluge PPA
-  apt_repository: repo='ppa:deluge-team/ppa'
-
 - name: Install deluge
   apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
   with_items:
-    - deluge
+    - deluged
+    - deluge-web
 
 - name: Create www-data user
   user: name=www-data system=yes shell=/bin/bash
 
 - name: chmod 750 ~www-data
-  file: path=/var/www-data owner=www-data group=www-data mode=750 state=directory
+  file: path=/var/www owner=www-data group=www-data mode=755 state=directory
 - name: mkdir ~www-data/downloads
   file: path=/var/www/downloads owner=www-data group=www-data mode=755 state=directory

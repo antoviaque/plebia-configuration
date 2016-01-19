@@ -6,8 +6,8 @@
     - tarsnap_tarsnapper_conf: "../../tarsnap/files/conf/tarsnapper.{{ inventory_hostname }}.conf"
   roles:
     - common
-    - users
     - { role: geerlingguy.security, security_sudoers_passwordless: [ubuntu] }
+    - users
     - { role: kamaln7.swapfile, swapfile_size: 2GB }
     - pmbauer.tarsnap
     - tarsnap
