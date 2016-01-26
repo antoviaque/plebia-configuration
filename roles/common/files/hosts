@@ -5,6 +5,7 @@
 149.202.186.230	mail mail.vm.plebia.org
 149.202.181.25	mysql mysql.vm.plebia.org
 149.202.186.237	opencraft opencraft.vm.plebia.org
+167.114.234.59	opencraft-console opencraft-console.vm.plebia.org
 149.202.186.241	opencraft-tasks opencraft-tasks.vm.plebia.org
 149.202.177.205	postgresql postgresql.vm.plebia.org
 149.202.186.178	web web.vm.plebia.org

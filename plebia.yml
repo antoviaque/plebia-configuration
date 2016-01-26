@@ -54,6 +54,10 @@
     - geerlingguy.php-mysql
     - nginx
 
+- hosts: opencraft-console
+  roles:
+    - opencraft
+
 - hosts: opencraft-tasks
   vars:
     - java_oracle_distribution: jre
