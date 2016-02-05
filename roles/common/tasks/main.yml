@@ -26,6 +26,9 @@
     - links
     - tree
     - pwgen
+    - libxml2-dev
+    - libxslt1-dev
+    - python-dev
 
 - name: Configure git author <root@<current_host>
   shell: git config --global user.name "Xavier Antoviaque" && git config --global user.email "xavier@antoviaque.org"
