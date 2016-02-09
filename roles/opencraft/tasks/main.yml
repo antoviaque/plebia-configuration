@@ -31,9 +31,3 @@
 
 - name: "chown -R {{ opencraft_root_dir }}"
   file: path="{{ opencraft_root_dir }}" owner=www-data group=www-data recurse=yes state=directory
-
-- name: Run migrations
-  shell: "{{ opencraft_virtualenv_dir }}/bin/exec make migrate"
-  args:
-    chdir: "{{ opencraft_root_dir }}"
-  sudo_user: www-data
