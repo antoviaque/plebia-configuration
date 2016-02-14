@@ -22,6 +22,17 @@
     - postgresql # mount must happen before package installation
     - ANXS.postgresql
 
+- hosts: opencraft-mongodb
+  vars:
+    - mongodb_conf_auth: true
+    - mongodb_conf_bind_ip: 0.0.0.0
+    - mongodb_conf_dbpath: '/var/lib/mongodb/db'
+    - mongodb_conf_logpath: '/var/log/mongodb/log/{{ mongodb_daemon_name }}.log'
+    - mongodb_pymongo_from_pip: true
+  roles:
+    - opencraft-mongodb # mount must happen before package installation
+    - greendayonfire.mongodb
+
 - hosts: mail
   roles:
     - postfix

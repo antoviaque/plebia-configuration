@@ -1,0 +1,18 @@
+- name: Create mongodb group
+  group: name=mongodb system=yes
+
+- name: Create mongodb user
+  user: name=mongodb group=mongodb system=yes
+
+- name: mount /var/lib/mongodb
+  mount: name=/var/lib/mongodb src=/dev/vdb1 fstype=ext4 state=mounted
+
+- name: mkdir /var/lib/mongodb/db /var/lib/mongodb/log
+  file: path="/var/lib/mongodb/{{ item }}" state=directory mode=0750 owner=mongodb group=mongodb
+  with_items: ['db', 'log']
+
+- name: chown -R /var/lib/mongodb
+  file: path=/var/lib/mongodb owner=mongodb group=mongodb recurse=yes state=directory
+
+- name: chmod /var/lib/mongodb
+  file: path=/var/lib/mongodb mode=700 state=directory

@@ -11,6 +11,8 @@
 149.202.186.178	web web.vm.plebia.org
 149.202.186.213	web-tartaruga web-tartaruga.vm.plebia.org
 
+149.202.169.78	opencraft-mongodb-integration opencraft-mongodb-integration.vm.plebia.org
+
 91.121.66.184 media media.vm.plebia.org
 176.31.121.212 tmp.media tmp.media.vm.plebia.org
 
