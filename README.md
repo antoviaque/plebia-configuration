@@ -1,2 +1,2 @@
-ansible-playbook -vv -i hosts -e @../plebia-secure/vars.yml --private-key=~/.ssh/id_rsa_ansible plebia.yml 
+ansible-playbook -vv -i ../plebia-secure/hosts -e @../plebia-secure/vars.yml --private-key=~/.ssh/id_rsa plebia.yml
 
