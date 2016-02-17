@@ -4,6 +4,7 @@
   with_file:
     - ../../users/tasks/public_keys/bradenmacdonald
     - ../../users/tasks/public_keys/smarnach
+    - ../../users/tasks/public_keys/omarkhan
 
 - name: Ensure commands can be executed as www-data - set shell
   user: name=www-data shell=/bin/bash
