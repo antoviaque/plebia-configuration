@@ -3,6 +3,7 @@
                   key="{{ item }}"
   with_file:
     - ../../users/tasks/public_keys/bradenmacdonald
+    - ../../users/tasks/public_keys/e-kolpakov
     - ../../users/tasks/public_keys/smarnach
     - ../../users/tasks/public_keys/omarkhan
 
