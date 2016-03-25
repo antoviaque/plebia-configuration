@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     - tarsnap_cache: /var/tarsnap/cache
-    - tarsnap_cron_hour: "5"
+    - tarsnap_cron_hour: "*"
     - tarsnap_tarsnapper_conf: "../../tarsnap/files/conf/tarsnapper.{{ inventory_hostname }}.conf"
   roles:
     - common
