@@ -6,6 +6,7 @@
     - ../../users/tasks/public_keys/e-kolpakov
     - ../../users/tasks/public_keys/smarnach
     - ../../users/tasks/public_keys/omarkhan
+    - ../../users/tasks/public_keys/itsjeyd
 
 - name: Ensure commands can be executed as www-data - set shell
   user: name=www-data shell=/bin/bash
