@@ -2,3 +2,6 @@
 - lineinfile: 'dest=/etc/ssh/sshd_config line="AllowUsers {{ item.username }}"'
   with_items: github_users
   notify: restart ssh
+
+- lineinfile: 'dest=/etc/ssh/sshd_config line="AllowUsers ubuntu"'
+  notify: restart ssh
