@@ -4,9 +4,13 @@
     - tarsnap_cache: /var/tarsnap/cache
     - tarsnap_cron_hour: "*"
     - tarsnap_tarsnapper_conf: "../../tarsnap/files/conf/tarsnapper.{{ inventory_hostname }}.conf"
+    - github_users:
+      - username: antoviaque
+        sudoers: yes
   roles:
     - common
     - { role: geerlingguy.security, security_sudoers_passwordless: [ubuntu] }
+    - znzj.github-users
     - users
     - { role: kamaln7.swapfile, swapfile_size: 2GB }
     - pmbauer.tarsnap
@@ -57,7 +61,11 @@
 - hosts: opencraft-tasks
   vars:
     - java_oracle_distribution: jre
+    - github_users:
+      - username: bradenmacdonald
+        sudoers: yes
   roles:
+    - znzj.github-users
     - groover.java
     - jira
 

@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Kazuhiro NISHIYAMA
+  description: "Setup users with github users' ssh keys"
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  categories:
+  - networking
+  - system
+dependencies: []
