@@ -14,6 +14,3 @@
 - name: Copy pre-backup script, if any
   copy: src="bin/backup-pre/{{ inventory_hostname }}.sh" dest=/usr/sbin/backup-pre.sh owner=root group=root mode=755
   when: tarsnap_pre_backup_script.stat.exists
-
-- name: Check we can access tarsnap and run fsck
-  command: tarsnap --cachedir /var/tarsnap/cache --keyfile /root/tarsnap.key --fsck
