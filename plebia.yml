@@ -22,9 +22,17 @@
     - geerlingguy.mysql
 
 - hosts: postgresql
+  vars:
+    - postgresql_listen_addresses: ['*']
+    - postgresql_pg_hba_passwd_hosts: ['0.0.0.0/0']
   roles:
     - postgresql # mount must happen before package installation
     - ANXS.postgresql
+
+- hosts: discourse-kickstart
+  roles:
+    - angstwad.docker_ubuntu
+    - xpeppers.discourse
 
 - hosts: mail
   roles:
