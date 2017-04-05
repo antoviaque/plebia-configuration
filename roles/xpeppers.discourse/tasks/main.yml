@@ -1,43 +1,4 @@
 ---
-- name: install apt packages
-  apt: pkg={{ item }} state=latest
-  sudo: yes
-  with_items:
-    - fail2ban
-    - ufw
-    - git
-    - htop
-
-- name: ensure fail2ban is running
-  sudo: yes
-  action: service name=fail2ban state=restarted enabled=yes
-
-- name: forbid SSH root login
-  sudo: yes
-  lineinfile: destfile=/etc/ssh/sshd_config regexp="^PermitRootLogin" line="PermitRootLogin no" state=present
-  notify:
-    - restart ssh
-
-- name: reset firewall
-  sudo: yes
-  action: shell ufw --force reset
-
-- name: allow firewall authorized ports
-  sudo: yes
-  action: shell ufw allow {{ item }}
-  with_items:
-    - 22
-    - 80
-    - 443
-
-- name: enable firewall
-  sudo: yes
-  action: shell ufw --force enable
-
-- name: show firewall status
-  sudo: yes
-  action: shell ufw status
-
 - name: add discourse user
   user: name=discourse groups=sudo,admin
 
@@ -50,33 +11,14 @@
   sudo: yes
   register: discourse_running
 
-- name: copy discourse source
-  synchronize: src=discourse dest=/var/ rsync_opts="--exclude=.git"
+- name: checkout discourse source
+  git: repo="https://github.com/discourse/discourse_docker.git" dest=/var/discourse update=no accept_hostkey=yes
   notify:
     - stop discourse
     - rebuild discourse
-- name: Ensures /var/discourse/containers dir exists
-  file: path={{project_root}}/conf state=directory
 
 - name: copy discourse configuration app.yml
-  copy: src=app.yml dest=/var/discourse/containers/app.yml owner=discourse group=sudo
-  notify:
-    - stop discourse
-    - rebuild discourse
-
-- name: Create /var/discourse/shared/standalone/ssl directory
-  file: path=/var/discourse/shared/standalone/ssl state=directory owner=discourse group=sudo
-
-- name: copy ssl key
-  copy: src=ssl.key dest=/var/discourse/shared/standalone/ssl/ssl.key owner=discourse group=sudo
-  when: ssl_key is defined
-  notify:
-    - stop discourse
-    - rebuild discourse
-
-- name: copy ssl crt
-  copy: src=ssl.crt dest=/var/discourse/shared/standalone/ssl/ssl.crt owner=discourse group=sudo
-  when: ssl_crt is defined
+  template: src=app.yml.j2 dest=/var/discourse/containers/app.yml owner=discourse group=sudo
   notify:
     - stop discourse
     - rebuild discourse
