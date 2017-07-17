@@ -5,6 +5,7 @@
     - postfix-mysql
     - postgrey
     - mysql-client
+    - mailman
 
 - name: Create mailbox group
   group: name=mailbox gid=2500 system=yes
