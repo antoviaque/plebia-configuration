@@ -33,7 +33,7 @@ params:
   #db_work_mem: "40MB"
 
   ## Which Git revision should this container use? (default: tests-passed)
-  #version: tests-passed
+  version: stable
 
 env:
   LANG: en_US.UTF-8
@@ -49,7 +49,7 @@ env:
   DISCOURSE_DB_HOST: postgresql.vm.plebia.org
 
   ## TODO: The domain name this Discourse instance will respond to
-  DISCOURSE_HOSTNAME: 'kickstart.opencraft.com'
+  DISCOURSE_HOSTNAME: 'edxchange.opencraft.com'
 
   ## Uncomment if you want the container to be started with the same
   ## hostname (-h option) as specified above (default "$hostname-$config")
