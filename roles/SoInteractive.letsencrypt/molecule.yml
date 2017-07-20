@@ -1,0 +1,15 @@
+---
+ansible:
+  playbook: tests/playbook.yml
+driver:
+  name: docker
+verifier:
+  name: testinfra
+docker:
+  containers:
+    - name: letsencrypt-ubuntu
+      image: ubuntu
+      image_version: xenial
+#    - name: letsencrypt-centos
+#      image: centos
+#      image_version: 7
