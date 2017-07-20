@@ -229,6 +229,7 @@ upcmail.net
 authsmtp.com
 authsmtp.co.uk
 /^outmail\d+\.authsmtp\.net$/
+/^outmail\d+\.authsmtp\.com$/
 # LOCAL CONFIG
 /^.*\.panelboxmanager.com$/
 mail.plebia.org
