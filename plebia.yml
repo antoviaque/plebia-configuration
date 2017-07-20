@@ -35,9 +35,13 @@
     - xpeppers.discourse
 
 - hosts: mail
+  vars:
+    - letsencrypt_email: xavier+letsencrypt@antoviaque.org
+    - letsencrypt_domains: ['mail.plebia.org']
   roles:
     - postfix
     - courier
+    - SoInteractive.letsencrypt
 
 - hosts: webservers
   vars:

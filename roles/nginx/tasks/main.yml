@@ -28,6 +28,17 @@
   notify:
     - restart nginx
 
+- name: Check if apache configuration files are present
+  local_action: stat path="roles/nginx/files/apache/{{ inventory_hostname }}/"
+  register: apache_config_files
+
+- name: Copy apache configuration when present
+  synchronize: src="apache/{{ inventory_hostname }}/ports.conf" dest=/etc/apache2 checksum=yes owner=no group=no
+  when: apache_config_files.stat.exists == True
+  notify:
+    - restart apache
+    - restart nginx
+
 - name: chown www-data /var/www
   file: path=/var/www mode=750 owner=www-data group=www-data state=directory
 
