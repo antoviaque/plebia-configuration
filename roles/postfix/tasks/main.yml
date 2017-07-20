@@ -20,7 +20,7 @@
   file: path=/mailbox owner=mailbox group=mailbox state=directory
 
 - name: chmod /mailbox
-  file: path=/mailbox mode=750 state=directory
+  file: path=/mailbox mode=755 state=directory
 
 - name: Copy postfix configuration
   synchronize: src="etc/" dest=/etc checksum=yes owner=no group=no
