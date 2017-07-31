@@ -1,8 +1,13 @@
 ml2forum.plebia.org			ml2forumplebia:
 webmail.plebia.org			lmtp:webmail.plebia.org:1111
+alicia@opencraft.com			smtp:aspmx.l.google.com
+bogdan@opencraft.com			smtp:aspmx.l.google.com
+brad@opencraft.com			smtp:aspmx.l.google.com
 braden@opencraft.com			smtp:aspmx.l.google.com
 brandon@opencraft.com			smtp:aspmx.l.google.com
 carl@opencraft.com			smtp:aspmx.l.google.com
+chandrakant@opencraft.com		smtp:aspmx.l.google.com
+cliff@opencraft.com			smtp:aspmx.l.google.com
 douglas@opencraft.com			smtp:aspmx.l.google.com
 eugeny@opencraft.com			smtp:aspmx.l.google.com
 jesse@opencraft.com			smtp:aspmx.l.google.com
