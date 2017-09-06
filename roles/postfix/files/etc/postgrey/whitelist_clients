@@ -240,3 +240,4 @@ smtp-out.amazonses.com
 /^.*\.startcom.org$/
 /^.*\.comodogroup.com$/
 /^.*\.messagingengine.com$/
+/^.*\.outlook.com$/
