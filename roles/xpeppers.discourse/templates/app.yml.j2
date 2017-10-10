@@ -62,8 +62,8 @@ env:
   ## TODO: The SMTP mail server used to validate new accounts and send notifications
   DISCOURSE_SMTP_ADDRESS: mail.authsmtp.com         # required
   #DISCOURSE_SMTP_PORT: 587                        # (optional, default 587)
-  DISCOURSE_SMTP_USER_NAME: ac51811      # required
-  DISCOURSE_SMTP_PASSWORD: untbxnt3hcyqtr               # required, WARNING the char '#' in pw can cause problems!
+  DISCOURSE_SMTP_USER_NAME: {{ discourse_smtp_user }}      # required
+  DISCOURSE_SMTP_PASSWORD: {{ discourse_smtp_password }}               # required, WARNING the char '#' in pw can cause problems!
   DISCOURSE_SMTP_ENABLE_START_TLS: false           # (optional, default true)
 
   ## If you added the Lets Encrypt template, uncomment below to get a free SSL certificate
