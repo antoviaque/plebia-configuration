@@ -17,6 +17,7 @@
 176.31.121.212 tmp.media tmp.media.vm.plebia.org
 
 217.182.80.219 discourse-kickstart kickstart.opencraft.com
+54.37.149.167 discourse-opencraft forum.opencraft.com
 
 # The following lines are desirable for IPv6 capable hosts
 ::1 ip6-localhost ip6-loopback

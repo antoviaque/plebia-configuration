@@ -29,7 +29,7 @@
     - postgresql # mount must happen before package installation
     - ANXS.postgresql
 
-- hosts: discourse-kickstart
+- hosts: discourse
   roles:
     - angstwad.docker_ubuntu
     - xpeppers.discourse

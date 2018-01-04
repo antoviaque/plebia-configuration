@@ -20,7 +20,6 @@
 - name: copy discourse configuration app.yml
   template: src=app.yml.j2 dest=/var/discourse/containers/app.yml owner=discourse group=sudo
   notify:
-    - stop discourse
     - rebuild discourse
 
 - meta: flush_handlers

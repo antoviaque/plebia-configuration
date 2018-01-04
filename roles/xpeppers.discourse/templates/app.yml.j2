@@ -44,12 +44,13 @@ env:
   #UNICORN_WORKERS: 3
 
   #DISCOURSE_DB_SOCKET: ''
-  DISCOURSE_DB_USERNAME: {{ postgresql_discourse_kickstart_user }}
-  DISCOURSE_DB_PASSWORD: {{ postgresql_discourse_kickstart_password }}
+  DISCOURSE_DB_USERNAME: {{ postgresql_discourse_user }}
+  DISCOURSE_DB_PASSWORD: {{ postgresql_discourse_password }}
+  DISCOURSE_DB_NAME: {{ postgresql_discourse_dbname }}
   DISCOURSE_DB_HOST: postgresql.vm.plebia.org
 
   ## TODO: The domain name this Discourse instance will respond to
-  DISCOURSE_HOSTNAME: 'edxchange.opencraft.com'
+  DISCOURSE_HOSTNAME: {{ discourse_hostname }}
 
   ## Uncomment if you want the container to be started with the same
   ## hostname (-h option) as specified above (default "$hostname-$config")
