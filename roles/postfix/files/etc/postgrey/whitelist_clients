@@ -236,7 +236,7 @@ mail.plebia.org
 plebia.org
 kochab.plebia.org
 farsides.com
-amazonses.com
+/^.*\.amazonses.com$/
 /^.*\.startcom.org$/
 /^.*\.comodogroup.com$/
 /^.*\.messagingengine.com$/
