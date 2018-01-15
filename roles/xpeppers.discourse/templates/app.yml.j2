@@ -65,7 +65,7 @@ env:
   #DISCOURSE_SMTP_PORT: 587                        # (optional, default 587)
   DISCOURSE_SMTP_USER_NAME: {{ discourse_smtp_user }}      # required
   DISCOURSE_SMTP_PASSWORD: {{ discourse_smtp_password }}               # required, WARNING the char '#' in pw can cause problems!
-  DISCOURSE_SMTP_ENABLE_START_TLS: false           # (optional, default true)
+  DISCOURSE_SMTP_ENABLE_START_TLS: true
 
   ## If you added the Lets Encrypt template, uncomment below to get a free SSL certificate
   LETSENCRYPT_ACCOUNT_EMAIL: xavier+discourse@opencraft.com
