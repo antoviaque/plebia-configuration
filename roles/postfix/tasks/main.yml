@@ -14,7 +14,7 @@
   user: name=mailbox uid=2500 group=mailbox system=yes
 
 - name: mount /mailbox
-  mount: name=/mailbox src=/dev/vdb1 fstype=ext4 state=mounted
+  mount: name=/mailbox src=/dev/vdc1 fstype=ext4 state=mounted
 
 - name: chown /mailbox
   file: path=/mailbox owner=mailbox group=mailbox state=directory
