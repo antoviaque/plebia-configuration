@@ -76,5 +76,6 @@ sender_dependent_relayhost_maps = hash:/etc/postfix/sender_dependent_relayhost
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_mechanism_filter =
+smtpd_sender_restrictions  = check_sender_access hash:/etc/postfix/sender_access
 
 #autoresponder_destination_recipient_limit = 1
