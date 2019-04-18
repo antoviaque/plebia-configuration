@@ -40,3 +40,15 @@ help-request:      "|/var/lib/mailman/mail/mailman request help"
 help-subscribe:    "|/var/lib/mailman/mail/mailman subscribe help"
 help-unsubscribe:  "|/var/lib/mailman/mail/mailman unsubscribe help"
 
+## ops mailing list
+ops:              "|/var/lib/mailman/mail/mailman post ops"
+ops-admin:        "|/var/lib/mailman/mail/mailman admin ops"
+ops-bounces:      "|/var/lib/mailman/mail/mailman bounces ops"
+ops-confirm:      "|/var/lib/mailman/mail/mailman confirm ops"
+ops-join:         "|/var/lib/mailman/mail/mailman join ops"
+ops-leave:        "|/var/lib/mailman/mail/mailman leave ops"
+ops-owner:        "|/var/lib/mailman/mail/mailman owner ops"
+ops-request:      "|/var/lib/mailman/mail/mailman request ops"
+ops-subscribe:    "|/var/lib/mailman/mail/mailman subscribe ops"
+ops-unsubscribe:  "|/var/lib/mailman/mail/mailman unsubscribe ops"
+
