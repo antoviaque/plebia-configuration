@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-backup
+  vars:
+    backup__env: 'test'
+    # the test env doesn't have a valid tarsnap key so the cache rebuild would
+    # fail
+    backup__rebuild_cache: false

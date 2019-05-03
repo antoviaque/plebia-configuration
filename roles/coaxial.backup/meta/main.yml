@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: coaxial
+  description: Automated, encrypted, online backups using tarsnap
+  license: MIT
+
+  min_ansible_version: 1.2
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+
+  galaxy_tags:
+    - backup
+    - tarsnap
+    - tarsnapper
+
+dependencies: []

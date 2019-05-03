@@ -1,0 +1,60 @@
+# -*- mode: yaml -*-
+# vi: set ft=yaml :
+
+# Global values, valid for all jobs unless overridden
+deltas: 1d 7d 30d 360d 18000d
+target: $name-$date
+
+{{ if XXXHOSTNAME == control }}
+
+jobs:
+  home:
+    sources:
+      - "/home"
+
+{{ endif }}
+
+discourse-kickstart / discourse-opencraft
+
+jobs:
+  www:
+    sources:
+      - "/var/discourse"
+
+mail
+
+jobs:
+  mailbox:
+    sources:
+      - "/mailbox"
+
+
+media
+
+jobs: []
+
+
+tarsnapper.mysql.conf
+
+jobs:
+  sql:
+    sources:
+      - "/var/lib/mysql/backup"
+    exec_before: /usr/sbin/backup-pre.sh
+
+
+opencraft-tasks / web-tartaruga / web
+
+jobs:
+  www:
+    sources:
+      - "/var/www"
+
+tarsnapper.postgresql.conf
+
+jobs:
+  sql:
+    sources:
+      - "/var/lib/postgresql/backup"
+    exec_before: /usr/sbin/backup-pre.sh
+

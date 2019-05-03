@@ -28,16 +28,17 @@ No special requirements for Debian/Ubuntu systems.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `vars/main.yml`):
+Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     security_ssh_port: 22
 
 The port through which you'd like SSH to be accessible. The default is port 22, but if you're operating a server on the open internet, and have no firewall blocking access to port 22, you'll quickly find that thousands of login attempts per day are not uncommon. You can change the port to a nonstandard port (e.g. 2849) if you want to avoid these thousands of automated penetration attempts.
 
-    security_ssh_password_authentication: 'no'
-    security_ssh_permit_root_login: 'no'
+    security_ssh_password_authentication: "no"
+    security_ssh_permit_root_login: "no"
+    security_ssh_usedns: "no"
 
-Security settings for SSH authentication. It's best to leave these both set to `'no'`, but there are times (especially during initial server configuration or when you don't have key-based authentication in place) when one or both may be safely set to `'yes'`.
+Security settings for SSH authentication. It's best to leave these set to `"no"`, but there are times (especially during initial server configuration or when you don't have key-based authentication in place) when one or all may be safely set to `'yes'`. **NOTE: It is _very_ important that you quote the 'yes' or 'no' values. Failure to do so may lock you out of your server.**
 
     security_sudoers_passwordless: []
     security_sudoers_passworded: []
@@ -47,6 +48,27 @@ A list of users who should be added to the sudoers file so they can run any comm
     security_autoupdate_enabled: true
 
 Whether to install/enable `yum-cron` (RedHat-based systems) or `unattended-upgrades` (Debian-based systems). System restarts will not happen automatically in any case, and automatic upgrades are no excuse for sloppy patch and package management, but automatic updates can be helpful as yet another security measure.
+
+    security_autoupdate_blacklist: []
+
+(Debian/Ubuntu only) A listing of packages that should not be automatically updated.
+
+    security_autoupdate_reboot: false
+
+(Debian/Ubuntu only) Whether to reboot when needed during unattended upgrades.
+
+    security_autoupdate_reboot_time: "03:00"
+
+(Debian/Ubuntu only) The time to trigger a reboot, when needed, if `security_autoupdate_reboot` is set to `true`. In 24h "hh:mm" clock format.
+
+    security_autoupdate_mail_to: ""
+    security_autoupdate_mail_on_error: true
+
+(Debian/Ubuntu only) If `security_autoupdate_mail_to` is set to an non empty value, unattended upgrades will send an e-mail to that address when some error occurs. You may either set this to a full email: `ops@example.com` or to something like `root`, which will use `/etc/aliases` to route the message. If you set `security_autoupdate_mail_on_error` to `false` you'll get an email after every package install.
+
+    security_fail2ban_enabled: true
+
+Wether to install/enable `fail2ban`. You might not want to use fail2ban if you're already using some other service for login and intrusion detection (e.g. [ConfigServer](http://configserver.com/cp/csf.html)).
 
 ## Dependencies
 
@@ -72,4 +94,4 @@ MIT (Expat) / BSD
 
 ## Author Information
 
-This role was created in 2014 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](http://ansiblefordevops.com/).
+This role was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
