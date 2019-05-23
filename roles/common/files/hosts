@@ -1,23 +1,14 @@
 127.0.0.1 localhost
 
-149.202.186.232	cardstories cardstories.vm.plebia.org
-149.202.174.74	control control.vm.plebia.org
-149.202.186.230	mail mail.vm.plebia.org
-149.202.181.25	mysql mysql.vm.plebia.org
-149.202.186.237	opencraft opencraft.vm.plebia.org
-167.114.234.59	opencraft-console opencraft-console.vm.plebia.org
-149.202.186.241	opencraft-tasks opencraft-tasks.vm.plebia.org
-149.202.177.205	postgresql postgresql.vm.plebia.org
-149.202.186.178	web web.vm.plebia.org
-149.202.186.213	web-tartaruga web-tartaruga.vm.plebia.org
-
-149.202.169.78	opencraft-mongodb-integration opencraft-mongodb-integration.vm.plebia.org
-
-91.121.66.184 media media.vm.plebia.org
-176.31.121.212 tmp.media tmp.media.vm.plebia.org
-
-217.182.80.219 discourse-kickstart kickstart.opencraft.com
-54.37.149.167 discourse-opencraft forum.opencraft.com
+149.202.180.178		control control.vm.plebia.org
+213.32.74.221		web web.vm.plebia.org
+149.202.165.14		web-tartaruga web-tartaruga.vm.plebia.org
+217.182.140.3		opencraft-tasks opencraft-tasks.vm.plebia.org
+149.202.164.36		mysql mysql.vm.plebia.org
+37.187.126.184		media media.vm.plebia.org
+54.38.43.33		discourse-kickstart discourse-kickstart.vm.plebia.org
+54.38.43.134		discourse-opencraft discourse-opencraft.vm.plebia.org
+149.202.179.237		mail mail.vm.plebia.org
 
 # The following lines are desirable for IPv6 capable hosts
 ::1 ip6-localhost ip6-loopback

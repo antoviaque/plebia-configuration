@@ -14,7 +14,7 @@
   user: name=mailbox uid=2500 group=mailbox system=yes
 
 - name: mount /mailbox
-  mount: name=/mailbox src=/dev/vdc1 fstype=ext4 state=mounted
+  mount: name=/mailbox src=/dev/vdb1 fstype=ext4 state=mounted
 
 - name: chown /mailbox
   file: path=/mailbox owner=mailbox group=mailbox state=directory
@@ -39,3 +39,35 @@
     - etc/postfix/sasl_passwd
   notify:
     - restart postfix
+
+- name: Mailman | Check the status of /var/lib/mailman - we want to use /mailbox/mailman for this
+  stat: path=/var/lib/mailman
+  register: var_lib_mailman
+ 
+- name: Mailman | Keep an archive of the distribution's /var/lib/mailman
+  command: mv /var/lib/mailman /var/lib/mailman.dist
+  when: var_lib_mailman.stat.isdir is defined and var_lib_mailman.stat.isdir
+
+- name: Mailman | Create symbolic link to /mailbox/mailman
+  file:
+    src: /mailbox/mailman
+    dest: /var/lib/mailman
+    state: link
+  when: var_lib_mailman.stat.isdir is defined and var_lib_mailman.stat.isdir
+  notify:
+    - restart mailman
+
+- name: Mailman | Check the status of /etc/letsencrypt - we want to use /mailbox/letsencrypt for this
+  stat: path=/etc/letsencrypt
+  register: etc_letsencrypt
+ 
+- name: Mailman | Keep an archive of the distribution's /etc/letencrypt
+  command: mv /etc/letsencrypt /etc/letencrypt.dist
+  when: etc_letsencrypt.stat.isdir is defined and etc_letsencrypt.stat.isdir
+
+- name: Mailman | Create symbolic link to /etc/letsencrypt
+  file:
+    src: /mailbox/letsencrypt
+    dest: /etc/letsencrypt
+    state: link
+  when: not etc_letsencrypt.stat.exists or (etc_letsencrypt.stat.isdir is defined and etc_letsencrypt.stat.isdir)

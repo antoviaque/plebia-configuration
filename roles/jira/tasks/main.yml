@@ -2,6 +2,13 @@
   user: name=www-data shell=/bin/false
 
 - name: Copy jira init script
-  copy: src=jira.conf dest=/etc/init/jira.conf
+  copy: src=jira.service dest=/etc/systemd/system/jira.service
   notify:
     - restart jira
+
+- name: enable jira
+  systemd:
+    name: jira
+    enabled: yes
+    daemon_reload: yes
+

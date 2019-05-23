@@ -12,6 +12,12 @@
     - courier-pop-ssl
     - courier-ssl
 
+- name: adding user mailbox to group courier
+  user:
+    name: mailbox
+    groups: courier
+    append: yes
+
 - name: Copy courier configuration
   synchronize: src="etc/" dest=/etc checksum=yes owner=no group=no
   notify:

@@ -7,38 +7,16 @@
 - name: apt-get update && dist-upgrade
   apt: upgrade=dist update_cache=yes cache_valid_time=18000
 
-- name: Check if packages need to be autoremoved
-  command: apt-get --dry-run autoremove
-  register: check_autoremove
-  changed_when: False
-
-- name: Autoremove unused packages
-  command: apt-get -y autoremove
-  when: "'packages will be REMOVED' in check_autoremove.stdout"
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
 
 - name: Install prerequisite packages
-  apt: pkg={{ item }} state=installed update_cache=yes cache_valid_time=18000
-  with_items:
-    - htop
-    - ntp
-    - sudo
-    - vim
-    - iftop
-    - iotop
-    - mosh
-    - git
-    - screen
-    - build-essential
-    - apticron
-    - apt-file
-    - etckeeper
-    - links
-    - tree
-    - pwgen
-    - libxml2-dev
-    - libxslt1-dev
-    - python-dev
-    - tmpreaper
+  apt:
+    pkg: ['htop', 'ntp', 'sudo', 'vim', 'iftop', 'iotop', 'mosh', 'git', 'screen', 'build-essential', 'apticron', 'apt-file', 'etckeeper', 'links', 'tree', 'pwgen', 'libxml2-dev', 'libxslt1-dev', 'python-dev', 'tmpreaper', 'intel-microcode']
+    state: installed
+    update_cache: yes
+    cache_valid_time: 18000
 
 - name: Activate tmpreaper
   lineinfile: dest=/etc/tmpreaper.conf state=absent regexp="^SHOWWARNING=true"

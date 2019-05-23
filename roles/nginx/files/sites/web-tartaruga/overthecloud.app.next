@@ -20,9 +20,9 @@ server {
 
         server_name overthecloud.app www.gluckworkshops.com;
 
-        ssl on;
-        ssl_certificate /etc/letsencrypt/live/overthecloud.app/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/overthecloud.app/privkey.pem;
+        #ssl on;
+        #ssl_certificate /etc/letsencrypt/live/overthecloud.app/fullchain.pem;
+        #ssl_certificate_key /etc/letsencrypt/live/overthecloud.app/privkey.pem;
 
         access_log  /var/www/log/overthecloud.app_ssl_nginx_access.log;
         error_log /var/www/log/overthecloud.app_ssl_nginx_error.log error;
@@ -39,9 +39,10 @@ server {
 			return 404;
 		}
 
-		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_pass 127.0.0.1:9000;
 		fastcgi_index index.php;
 		include fastcgi_params;
+		fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
 	}
 
         # deny access to .htaccess files

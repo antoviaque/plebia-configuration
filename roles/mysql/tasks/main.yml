@@ -12,3 +12,20 @@
 
 - name: chmod /var/lib/mysql
   file: path=/var/lib/mysql mode=700 state=directory
+
+- name: Install my.cnf - ubuntu
+  template:
+     src: my.cnf.j2
+     dest: /home/ubuntu/.my.cnf
+     owner: ubuntu
+     group: ubuntu
+     mode: '0600'
+
+- name: Install my.cnf - root
+  template:
+     src: my.cnf.j2
+     dest: /root/.my.cnf
+     owner: root
+     group: root
+     mode: '0600'
+

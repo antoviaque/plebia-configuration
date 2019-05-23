@@ -1,5 +1,0 @@
-- name: start cardstories
-  service: name=cardstories state=started
-
-- name: start cardstories-website
-  service: name=cardstories-website state=started

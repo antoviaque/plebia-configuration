@@ -1,0 +1,47 @@
+# -*- mode: yaml -*-
+# vi: set ft=yaml :
+
+{% if false %}
+# !! This file needs to be linked to from coaxial.backup/templates
+# !! And you need to add the snitch to the cron command in coaxial.backup: " ; curl -d s=$? https://nosnch.in/{{ backup_snitch }} &> /dev/null " 
+{% endif %}
+
+# Global values, valid for all jobs unless overridden
+deltas: 1d 7d 30d 360d 18000d
+target: $name-$date
+
+{% if inventory_hostname == 'control' %}
+jobs:
+  home:
+    sources:
+      - "/home"
+{% endif %}
+{% if inventory_hostname == 'discourse-kickstart' or inventory_hostname == 'discourse-opencraft' %}
+jobs:
+  www:
+    sources:
+      - "/var/discourse"
+{% endif %}
+{% if inventory_hostname == 'mail' %}
+jobs:
+  mailbox:
+    sources:
+      - "/mailbox"
+{% endif %}
+{% if inventory_hostname == 'media' %}
+jobs: []
+{% endif %}
+{% if inventory_hostname == 'mysql' %}
+jobs:
+  sql:
+    sources:
+      - "/var/lib/mysql/backup"
+    exec_before: /usr/sbin/backup-pre.sh
+{% endif %}
+{% if inventory_hostname == 'opencraft-tasks' or inventory_hostname == 'web-tartaruga' or inventory_hostname == 'web' %}
+jobs:
+  www:
+    sources:
+      - "/var/www"
+{% endif %}
+

@@ -10,10 +10,14 @@
     - /etc/postfix/local_recipient_maps
     - /etc/postfix/sasl_passwd
     - /etc/postfix/sender_dependent_relayhost
-    - /etc/postfix/smtp_auth
     - /etc/postfix/transport
     - /etc/postfix/virtual
     - /etc/postfix/sender_access
 
 - name: run newaliases
   command: /usr/bin/newaliases
+
+- name: restart mailman
+  service:
+    name: mailman
+    state: restarted
