@@ -24,6 +24,7 @@
   vars:
     - letsencrypt_email: xavier+letsencrypt@antoviaque.org
     - letsencrypt_domains: ['mail.plebia.org']
+    - letsencrypt_webroot: '/var/www/html'
   roles:
     - postfix
     - courier
