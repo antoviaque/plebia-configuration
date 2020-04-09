@@ -46,6 +46,21 @@
     - geerlingguy.php
     - geerlingguy.php-mysql
     - nginx
+
+- hosts: jitsi
+  roles:
+     - { role: systemli.jitsi_meet }
+     - { role: systemli.letsencrypt }
+  vars:
+    jitsi_meet_server_name: "meet.opencraft.com"
+    letsencrypt_cert:
+      name: "{{ jitsi_meet_server_name }}"
+      domains:
+        - "{{ jitsi_meet_server_name }}"
+      challenge: "http"
+      http_auth: "webroot"
+      webroot_path: "/usr/share/jitsi-meet"
+      services: ["nginx"]
  
 - hosts: discourse
   roles:

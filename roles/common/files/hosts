@@ -9,6 +9,7 @@
 54.38.43.33		discourse-kickstart discourse-kickstart.vm.plebia.org
 54.38.43.134		discourse-opencraft discourse-opencraft.vm.plebia.org
 149.202.179.237		mail mail.vm.plebia.org
+54.38.43.41		jitsi-opencraft jitsi-opencraft.vm.plebia.org
 
 # The following lines are desirable for IPv6 capable hosts
 ::1 ip6-localhost ip6-loopback

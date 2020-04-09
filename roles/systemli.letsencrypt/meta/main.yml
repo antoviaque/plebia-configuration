@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: systemli
+  description: Role to obtain Let's Encrypt SSL certificates
+  company: systemli.org
+  license: GPLv3
+  min_ansible_version: 2.2
+  galaxy_tags:
+    - ssl
+    - letsencrypt
+  platforms:
+  - name: Debian
+    versions:
+      - jessie
+      - stretch
+  notifications:
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
+dependencies:
+  - role: jnv.debian-backports
+    when: ansible_distribution_major_version|int <= 8
