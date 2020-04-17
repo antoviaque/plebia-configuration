@@ -13,7 +13,7 @@
 
 - name: Install prerequisite packages
   apt:
-    pkg: ['htop', 'ntp', 'sudo', 'vim', 'iftop', 'iotop', 'mosh', 'git', 'screen', 'build-essential', 'apticron', 'apt-file', 'etckeeper', 'links', 'tree', 'pwgen', 'libxml2-dev', 'libxslt1-dev', 'python-dev', 'tmpreaper', 'intel-microcode']
+    pkg: ['htop', 'ntp', 'sudo', 'vim', 'iftop', 'iotop', 'mosh', 'git', 'screen', 'build-essential', 'apticron', 'apt-file', 'etckeeper', 'links', 'tree', 'pwgen', 'libxml2-dev', 'libxslt1-dev', 'python-dev', 'tmpreaper', 'intel-microcode', 'python3.7', 'python3.7-dev']
     state: installed
     update_cache: yes
     cache_valid_time: 18000
