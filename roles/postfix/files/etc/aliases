@@ -52,3 +52,15 @@ ops-request:      "|/var/lib/mailman/mail/mailman request ops"
 ops-subscribe:    "|/var/lib/mailman/mail/mailman subscribe ops"
 ops-unsubscribe:  "|/var/lib/mailman/mail/mailman unsubscribe ops"
 
+## recruitment mailing list
+recruitment:              "|/var/lib/mailman/mail/mailman post recruitment"
+recruitment-admin:        "|/var/lib/mailman/mail/mailman admin recruitment"
+recruitment-bounces:      "|/var/lib/mailman/mail/mailman bounces recruitment"
+recruitment-confirm:      "|/var/lib/mailman/mail/mailman confirm recruitment"
+recruitment-join:         "|/var/lib/mailman/mail/mailman join recruitment"
+recruitment-leave:        "|/var/lib/mailman/mail/mailman leave recruitment"
+recruitment-owner:        "|/var/lib/mailman/mail/mailman owner recruitment"
+recruitment-request:      "|/var/lib/mailman/mail/mailman request recruitment"
+recruitment-subscribe:    "|/var/lib/mailman/mail/mailman subscribe recruitment"
+recruitment-unsubscribe:  "|/var/lib/mailman/mail/mailman unsubscribe recruitment"
+
