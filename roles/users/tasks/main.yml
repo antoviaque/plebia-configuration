@@ -13,7 +13,15 @@
                   key="{{ item }}"
   with_file:
     - public_keys/pierre
+    - public_keys/geoffrey
   when: inventory_hostname == 'mail'
+
+- name: Set up authorized_keys for the ubuntu user - opencraft servers
+  authorized_key: user=ubuntu
+                  key="{{ item }}"
+  with_file:
+    - public_keys/geoffrey
+  when: inventory_hostname == 'discourse-opencraft' or inventory_hostname == 'discourse-kickstart' or inventory_hostname == 'opencraft-tasks'
 
 - name: chmod 750 /root
   file: path=/root owner=root group=root mode=750 state=directory
